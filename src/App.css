@@ -4,6 +4,7 @@
   padding:0;
   box-sizing:border-box;
   font-family: poppins;
+  /* border:1px solid red; */
 }
 body{
   background:#0f101c;
@@ -153,6 +154,7 @@ section .rightBox .controlBox table{
 section .rightBox .controlBox table tr{
   height:40px;
   width:100%;
+  white-space: nowrap; 
 }
 section .rightBox .controlBox table tr td{
   /* border:2px solid red; */
@@ -160,6 +162,16 @@ section .rightBox .controlBox table tr td{
   font-size:22px;
   font-weight: 400;
   color:#FFFFFFee;
+}
+section .rightBox .controlBox table tr:nth-child(1) td:nth-child(2){
+  white-space: nowrap; 
+}
+section .rightBox .controlBox table tr:nth-child(1) td:nth-child(2) div{
+  width:200px;
+  text-align: right;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
 }
 section .rightBox .controlBox table tr td:nth-child(2){
   text-align: right;

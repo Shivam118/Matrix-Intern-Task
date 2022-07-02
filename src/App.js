@@ -1,11 +1,27 @@
+import React, { useState } from "react";
 import "./App.css";
 import logo from "./logo.png";
+
 function App() {
+  if (window.ethereum) {
+    // Do something
+    window.ethereum
+      .request({ method: "eth_requestAccounts" })
+      .then((res) => accountChangeHandler(res[0]));
+  } else {
+    alert("install metamask extension!!");
+  }
+
+  const [address, setAddress] = useState("");
+  const accountChangeHandler = (account) => {
+    setAddress(account);
+  };
+
   return (
     <div className="App">
       <header>
         <div>
-          <img src={logo} alt="logo"/>
+          <img src={logo} alt="logo" />
           <span>dao king</span>
         </div>
         <div>
@@ -13,7 +29,6 @@ function App() {
           <button>connect</button>
         </div>
       </header>
-
 
       <section>
         <div className="leftBox">
@@ -29,12 +44,12 @@ function App() {
           <div className="cardsContent">
             <div className="cards">
               APY In Percentage
-              <br/>
+              <br />
               <span>24% APY</span>
             </div>
             <div className="cards">
               Current Token Price
-              <br/>
+              <br />
               <span>1.384 USDT</span>
             </div>
           </div>
@@ -57,7 +72,10 @@ function App() {
             <table>
               <tr>
                 <td>Your Wallet Address</td>
-                <td>0x8D3f...9833</td>
+                <td>
+                  <div>{address}</div>
+                  {/* <div>0x8D3f0x8D3f0x8D3f0x8D3f0x8D3f...9833</div> */}
+                </td>
               </tr>
               <tr>
                 <td>Total Stakable Token</td>
@@ -88,8 +106,8 @@ function App() {
               </tr>
               <tr>
                 <td colspan="2">
-                  <input type="text" placeholder="Enter Amount Of Token"/>
-                  <input type="submit" value="MAX"/>
+                  <input type="text" placeholder="Enter Amount Of Token" />
+                  <input type="submit" value="MAX" />
                 </td>
               </tr>
             </table>
